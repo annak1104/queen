@@ -1,14 +1,12 @@
 "use client";
 
 import type { MouseEvent } from "react";
-import { Camera, MapPin, MessageCircle, Music2, Send } from "lucide-react";
+import { Camera, MapPin, Music2 } from "lucide-react";
 
 const iconMap = {
   instagram: Camera,
   mapPin: MapPin,
   tiktok: Music2,
-  telegram: Send,
-  viber: MessageCircle,
 } as const;
 
 type ContactButtonProps = {

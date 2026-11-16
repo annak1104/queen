@@ -1,13 +1,12 @@
 import { MapPin, Sparkles, Volume2 } from "lucide-react";
 import { ContactButton } from "@/components/ContactButton";
 import { CrownMark } from "@/components/CrownMark";
-import { PhoneActions } from "@/components/PhoneActions";
+import { PhoneContacts } from "@/components/PhoneContacts";
 import { store } from "@/config/store";
 
 export default function Home() {
   const { links } = store;
   const hasSocials = Boolean(links.instagram || links.tiktok);
-  const hasMessaging = Boolean(links.telegram || links.viber);
 
   return (
     <main className="page-shell">
@@ -80,21 +79,10 @@ export default function Home() {
             />
           ) : null}
 
-          <PhoneActions phones={store.phones} />
-
-          {hasMessaging ? (
-            <div className="messaging-grid" aria-label="Месенджери">
-              {links.telegram ? (
-                <ContactButton description="Написати нам" href={links.telegram} icon="telegram" label="Telegram" />
-              ) : null}
-              {links.viber ? (
-                <ContactButton description="Написати нам" href={links.viber} icon="viber" label="Viber" />
-              ) : null}
-            </div>
-          ) : null}
+          <PhoneContacts phones={store.phones} />
         </div>
 
-        {!hasSocials && !store.phones.length && !hasMessaging ? (
+        {!hasSocials && !store.phones.length ? (
           <div className="quiet-contact" role="note">
             <Volume2 aria-hidden="true" size={17} strokeWidth={1.6} />
             <span>Будемо раді познайомитися з вами</span>
